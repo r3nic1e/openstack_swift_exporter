@@ -1,0 +1,16 @@
+sudo: required
+
+language: go
+
+services:
+  - docker
+
+script:
+  - docker build --build-arg "SHA1=$TRAVIS_COMMIT" --build-arg "TAG=$TRAVIS_TAG" --build-arg "DATE=$(date +'%Y-%m-%d')" -t r3nic1e/openstack_swift_exporter .
+
+deploy:
+  provider: script
+  script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker push r3nic1e/openstack_swift_exporter
+  on:
+    tags: true
+    branch: master
