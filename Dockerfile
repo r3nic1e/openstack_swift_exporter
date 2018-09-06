@@ -1,7 +1,7 @@
 FROM golang:1.10
 
 WORKDIR /go/src/github.com/r3nic1e/openstack_swift_exporter/
-ADD *.go .
+ADD *.go ./
 
 ARG SHA1
 ARG TAG
