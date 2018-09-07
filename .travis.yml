@@ -13,4 +13,3 @@ deploy:
   script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && docker push r3nic1e/openstack_swift_exporter:$TRAVIS_TAG
   on:
     tags: true
-    branch: master
